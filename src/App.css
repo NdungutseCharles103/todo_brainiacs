@@ -1,0 +1,17 @@
+.App{
+  background: #264357;
+}
+::placeholder {
+  color: red;
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: red;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: red;
+}
