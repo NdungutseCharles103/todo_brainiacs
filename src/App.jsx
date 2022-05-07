@@ -1,7 +1,14 @@
 import React from "react";
+import Form from "./components/form";
+import TodoList from "./components/todolist";
 
 function App() {
-  return <div className="text-red-500 bg-slate-600">Panga</div>;
+  return (
+    <div className="">
+      <Form />
+      <TodoList />
+    </div>
+  );
 }
 
 export default App;
