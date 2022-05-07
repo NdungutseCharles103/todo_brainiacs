@@ -16,4 +16,3 @@ export function TodoProvider({ children }) {
   );
 }
 
-export default AppContext;

@@ -6,6 +6,7 @@ import { useTodos } from '../contexts/AppContext'
 function Form() {
     const [input, setInput]= useState('')
     const {todos, setTodos} = useTodos()
+    console.log(todos);
 
     const submitTodo = (e)=>{
         e.preventDefault();

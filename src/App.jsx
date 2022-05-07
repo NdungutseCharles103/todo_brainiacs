@@ -12,8 +12,8 @@ function App() {
       <div className="flex flex-col w-full App h-screen">
         <Header />
         <div className="flex flex-col bg-white w-2/3  mx-auto p-5 items-center">
-          <Form todos={todos} setTodos={setTodos} />
-          <TodoList todos={todos} setTodos={setTodos} />
+          <Form />
+          <TodoList />
         </div>
       </div>
     </TodoProvider>
