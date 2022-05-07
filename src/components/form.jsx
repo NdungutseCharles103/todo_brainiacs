@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { BiPlus } from 'react-icons/bi'
 import '../App.css'
+import { useTodos } from '../contexts/AppContext'
 
-function Form({todos, setTodos}) {
+function Form() {
     const [input, setInput]= useState('')
+    const {todos, setTodos} = useTodos()
 
-    const submitTodo = ()=>{
+    const submitTodo = (e)=>{
+        e.preventDefault();
         const todo = {
             text: input,
             completed: false,
