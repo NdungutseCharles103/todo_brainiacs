@@ -1,9 +1,18 @@
-import React from 'react'
+import React from "react";
+// import { BiTrash } from "react-icons/bi";
 
 function Todo() {
   return (
-    <div>Todo</div>
-  )
+    <div className="">
+      <div className="title">
+        <p className="">Title:</p>
+        <p className="">Watching Television</p>
+      </div>
+      <div className="action">
+        <BiTrash />
+      </div>
+    </div>
+  );
 }
 
-export default Todo
+export default Todo;
