@@ -1,21 +1,22 @@
 import React from "react";
-import Form from "./components/form";
-import Header from "./components/Header";
-import TodoList from "./components/todolist";
+import Trans from "./Trans";
+import Login from "./components/Login";
 import './App.css'
 import { TodoProvider } from './contexts/AppContext'
+import {BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { useTodos } from './contexts/AppContext'
 
 function App() {
+  const {isLogin} = useTodos()
 
   return (
     <TodoProvider>
-      <div className="flex flex-col w-full App h-screen">
-        <Header />
-        <div className="flex flex-col bg-white w-2/3  mx-auto p-5 items-center">
-          <Form todos={todos} setTodos={setTodos} />
-          <TodoList todos={todos} setTodos={setTodos} />
-        </div>
-      </div>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Trans />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </Router>
     </TodoProvider>
   );
 }

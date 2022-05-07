@@ -9,11 +9,12 @@ export function useTodos() {
 export function TodoProvider({ children }) {
   const [todos, setTodos] = useState([]);
   const [user, setUser] = useState({});
+  const [islogin, setLogin] = useState(false)
+
   return (
-    <TodoContext.Provider value={{ user, todos, setTodos, setUser }}>
+    <TodoContext.Provider value={{ user, todos, setTodos, setUser, islogin }}>
       {children}
     </TodoContext.Provider>
   );
 }
 
-export default AppContext;
