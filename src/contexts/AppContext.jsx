@@ -9,10 +9,27 @@ export function useTodos() {
 export function TodoProvider({ children }) {
   const [todos, setTodos] = useState([]);
   const [user, setUser] = useState({});
-  const [islogin, setLogin] = useState(false)
+  const [isLogedIn, setIsLogedIn] = useState(false);
+
+  const getSavedUser = ()=>{
+      const user = JSON.parse(localStorage.getItem('user'))
+      if(user){
+          setUser(user.names)
+          console.log(user);
+          setIsLogedIn(true);
+      }
+      return
+  }
+
+  useEffect(() => {
+      getSavedUser();
+  }, []);
+
 
   return (
-    <TodoContext.Provider value={{ user, todos, setTodos, setUser, islogin }}>
+    <TodoContext.Provider
+      value={{ user, todos, setTodos, setUser, isLogedIn, setIsLogedIn }}
+    >
       {children}
     </TodoContext.Provider>
   );

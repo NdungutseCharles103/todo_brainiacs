@@ -22,14 +22,18 @@ function Form() {
     <form className="w-3/4 mx-auto rounded-3xl flex items-center justify-between bg-sky-300">
       <input
         value={input}
-        onChange={(e)=> setInput(e.target.value)}
+        onChange={(e) => setInput(e.target.value)}
         className="w-[80%] outline-none border-none mx-auto bg-transparent text-white text-xl px-2"
         type="text"
         placeholder="Add a Todo"
       />
-      <div className=" rounded-full p-4 bg-sky-600">
-        <BiPlus className=" text-white" onClick={submitTodo} />
-      </div>
+      <button
+        type="submit"
+        onClick={submitTodo}
+        className=" rounded-full p-4 bg-sky-600"
+      >
+        <BiPlus className=" text-white" />
+      </button>
     </form>
   );
 }
