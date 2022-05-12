@@ -19,7 +19,7 @@ function Form() {
     }
 
   return (
-    <form className="w-3/4 mx-auto rounded-3xl flex items-center justify-between bg-sky-300">
+    <form className="w-3/4 mt-5 mx-auto rounded-3xl flex items-center justify-between bg-sky-300">
       <input
         value={input}
         onChange={(e) => setInput(e.target.value)}
