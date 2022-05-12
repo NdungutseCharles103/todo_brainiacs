@@ -2,18 +2,16 @@
   background: #264357;
 }
 
-::placeholder {
+body::placeholder {
   color: red;
   opacity: 1;
 }
 
-:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
+::-ms-input-placeholder {
   color: red;
 }
 
 ::-ms-input-placeholder {
-  /* Microsoft Edge */
   color: red;
 }
 
@@ -41,4 +39,7 @@ h1 {
   justify-content: space-between;
   height: 15vh;
 
+}
+.compl{
+  text-decoration: line-through;
 }

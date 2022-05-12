@@ -7,9 +7,9 @@ function TodoList() {
   return (
     <div className="w-full">
       {todos.map((todo, index) => (
-        <Todo key={index} todo={todo} />
+        <Todo key={index} index={index+1} todo={todo} />
       ))}
-      <Todo />
+      {/* <Todo /> */}
     </div>
   );
 }
