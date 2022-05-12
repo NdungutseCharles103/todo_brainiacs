@@ -1,5 +1,5 @@
 import React from "react";
-// import { BiTrash } from "react-icons/bi";
+import { BiTrash } from "react-icons/bi";
 
 function Todo() {
   return (

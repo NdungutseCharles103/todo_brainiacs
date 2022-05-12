@@ -21,6 +21,16 @@ export function TodoProvider({ children }) {
       return
   }
 
+  const getTodos = async()=> {
+    const res = await fetch("https://wepanga.herokuapp.com/todos");
+    const data = await res.json()
+    console.log(data);
+  }
+
+  useEffect(() => {
+    getTodos()
+  }, []);
+
   useEffect(() => {
       getSavedUser();
   }, []);
