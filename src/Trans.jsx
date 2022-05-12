@@ -5,7 +5,7 @@ import TodoList from "./components/todolist";
 
 function Trans() {
   return (
-    <div className="flex flex-col w-full App h-screen">
+    <div className="flex flex-col w-full App h-screen overflow-hidden">
       <Header />
       <div className="flex flex-col bg-white w-2/3  mx-auto p-5 items-center">
         <Form />

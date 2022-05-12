@@ -8,9 +8,9 @@ function Header() {
 
   return (
     <div>
-      <div className="container">
-      <h1>PANGA</h1>
-      <button className="add-btn">
+      <div className="w-2/3 mx-auto flex flex-col items-center">
+      <h1 className='text-2xl'>PANGA</h1>
+      <button className="add-btn mt-9">
         {edit?'Edit Todo':'Add Todo'}
       <FaTasks className="fa"></FaTasks>
       </button>

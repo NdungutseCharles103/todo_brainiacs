@@ -5,11 +5,10 @@ import { useTodos } from "../contexts/AppContext";
 function TodoList() {
   const { todos } = useTodos();
   return (
-    <div className="w-full">
+    <div className="w-full flex flex-col overflow-auto h-[70vh]">
       {todos.map((todo, index) => (
         <Todo key={index} index={index+1} todo={todo} />
       ))}
-      {/* <Todo /> */}
     </div>
   );
 }
