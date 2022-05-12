@@ -5,13 +5,15 @@ import '../App.css'
 import { images } from "../images/image";
 
 function Todo({index, todo}) {
-  const [isImage, setIsImage] = useState(false)
   const { setCompleted, editTodo, deleteTodo } = useTodos()
 
   const image = images.filter(img=> todo.text.includes(img.name[0]) || todo.text.includes(img.name[1]))
   const imageHandler = ()=>{
     if (image.length !== 0) {
       setIsImage(true)
+      todo.image = image[0].image
+    }else{
+      setIsImage(false)
     }
   }
   useEffect(() => {
@@ -23,10 +25,10 @@ function Todo({index, todo}) {
       className="flex mt-8 items-center p-3 rounded-lg
      bg-slate-200 justify-between"
     >
-      {isImage ? (
+      {todo.image !== '' ? (
         <img
         className="w-[70px]"
-         src={image[0].image} alt="" />
+         src={todo.image} alt="" />
       ) : (
         <div
           className={`p-4 px-6 text-3xl ${

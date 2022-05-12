@@ -5,19 +5,21 @@ import { useTodos } from "../contexts/AppContext";
 import { api } from "../contexts/AppContext";
 
 function Form() {
-  const { todos, setTodos, updateTodo, input, setInput, edit, setEdit } = useTodos();
+  const { todos, setTodos, updateTodo, input, setInput, edit, setEdit } =
+    useTodos();
 
-  const submitTodo = async(e) => {
+  const submitTodo = async (e) => {
     e.preventDefault();
     const todo = {
       id: Math.random() * 100000,
       text: input,
       completed: false,
+      image: "",
     };
     setInput("");
-   setTodos([...todos, todo]);
-  //  const res = await api.post('/newTodo', todo)
-  //  console.log(res);
+    setTodos([...todos, todo]);
+    //  const res = await api.post('/newTodo', todo)
+    //  console.log(res);
   };
 
   return (
@@ -27,11 +29,11 @@ function Form() {
         onChange={(e) => setInput(e.target.value)}
         className="w-[80%] outline-none border-none mx-auto bg-transparent text-black text-xl px-2"
         type="text"
-        placeholder={edit?'Edit a Todo':'Add a Todo'}
+        placeholder={edit ? "Edit a Todo" : "Add a Todo"}
       />
       <button
         type="submit"
-        onClick={edit?updateTodo:submitTodo}
+        onClick={edit ? updateTodo : submitTodo}
         className=" rounded-full p-4 bg-sky-600"
       >
         {edit ? <BiEdit /> : <BiPlus className=" text-white" />}
