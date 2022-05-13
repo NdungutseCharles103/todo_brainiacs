@@ -30,7 +30,7 @@ export function TodoProvider({ children }) {
   const getTodos = async () => {
     const res = await api.get("/todos");
     const data = await res.data;
-    console.log(data);
+    setTodos(data)
   };
 
   const removeTodo = (todo) => {
@@ -82,9 +82,9 @@ export function TodoProvider({ children }) {
     );
   };
 
-  // useEffect(() => {
-  //   getTodos();
-  // }, []);
+  useEffect(() => {
+    getTodos();
+  }, []);
 
   useEffect(() => {
     getSavedUser();

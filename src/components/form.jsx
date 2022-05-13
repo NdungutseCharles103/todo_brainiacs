@@ -11,15 +11,13 @@ function Form() {
   const submitTodo = async (e) => {
     e.preventDefault();
     const todo = {
-      id: Math.random() * 100000,
       text: input,
-      completed: false,
-      image: "",
+      image: "relImage",
     };
     setInput("");
     setTodos([...todos, todo]);
-    //  const res = await api.post('/newTodo', todo)
-    //  console.log(res);
+     const res = await api.post('/newTodo', todo)
+     console.log(res);
   };
 
   return (
