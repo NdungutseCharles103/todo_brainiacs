@@ -4,7 +4,7 @@ import tv from "./tv.png";
 
 export const images = [
 {
-    name: ['match', 'football'],
+    name: ['match', 'football', 'premier'],
     image: match
 },
 {

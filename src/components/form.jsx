@@ -6,21 +6,8 @@ import { api } from "../contexts/AppContext";
 import { images } from "../images/image";
 
 function Form() {
-  const { todos, setTodos, setIsImage, updateTodo, input, setInput, edit, setEdit } =
+  const { todos, setTodos, getTodos, updateTodo, input, setInput, edit, setEdit } =
     useTodos();
-
-    // const image = images.filter(img=> todo.text.includes(img.name[0]) || todo.text.includes(img.name[1]))
-    // const imageHandler = ()=>{
-    //   if (image.length !== 0) {
-    //     todo.image = image[0].image
-    //     setIsImage(true)
-    //   }else{
-    //     setIsImage(true);
-    //   }
-    // }
-    // useEffect(() => {
-    //   imageHandler();
-    // }, []);
 
   const submitTodo = async (e) => {
     e.preventDefault();
@@ -34,6 +21,7 @@ function Form() {
     setTodos([...todos, todo]);
      const res = await api.post('/newTodo', todo)
      console.log(res);
+     await getTodos()
   };
 
   return (

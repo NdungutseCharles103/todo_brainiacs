@@ -9,8 +9,8 @@ function Todo({index, todo}) {
   return (
     <>
       {!isImage?(<div
-        className="flex mt-8 items-center p-3 rounded-lg
-     bg-slate-200 justify-between"
+        className={`flex mt-8 items-center p-3 rounded-lg
+     ${todo.completed?'bg-[#264357]': 'bg-slate-200'}  justify-between`}
       >
         {todo.image !== "rel" ? (
           <img className="w-[70px]" src={todo.image} alt="" />
@@ -23,8 +23,8 @@ function Todo({index, todo}) {
             {index}
           </div>
         )}
-        <div className="flex flex-col w-full ml-3">
-          <div className="title flex items-center w-full">
+        <div className={ `flex flex-col w-full ml-3  ${todo.completed?'text-white':'text-black'}`}>
+          <div className={`title flex items-center w-full`}>
             <p className="text-xl font-semibold">Title:</p>
             <p
               className={`ml-3 box-border w-full

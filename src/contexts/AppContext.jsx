@@ -1,5 +1,6 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useCallback , use} from "react";
 import axios from "axios";
+import { images } from "../images/image";
 
 const TodoContext = React.createContext();
 export const api = axios.create({
@@ -33,7 +34,6 @@ export function TodoProvider({ children }) {
     const data = await res.data;
     setTodos(data)
   };
-
   const removeTodo = (todo) => {
     setTodos(todos.filter((t) => t._id === todo._id));
   };
@@ -46,9 +46,11 @@ export function TodoProvider({ children }) {
     setTodo(todo);
   };
 
-  const updateTodo = (e) => {
+  const updateTodo = async(e) => {
     e.preventDefault();
+    const image = images.filter(img=> input.includes(img.name[0]) || input.includes(img.name[1]))
     todo.text = input;
+    todo.image = image.length === 0?'rel': image[0].image,
      setTodos(
        todos.map((td) => {
          if (td._id === todo._id) {
@@ -60,15 +62,19 @@ export function TodoProvider({ children }) {
          return td;
        })
      );
+     const res = await api.put(`/todos/${todo._id}`, {...todo, text: input})
+     console.log(res);
     setInput("");
     setEdit(false);
   };
 
-  const deleteTodo = (todo) => {
+  const deleteTodo = async(todo) => {
     setTodos(todos.filter((t) => t._id !== todo._id));
+    const res = await api.delete(`/todos/${todo._id}`)
+    console.log(res);
   };
 
-  const setCompleted = (todo) => {
+  const setCompleted = async(todo) => {
     console.log(todo._id);
     setTodos(
       todos.map((td) => {
@@ -81,11 +87,19 @@ export function TodoProvider({ children }) {
         return td;
       })
     );
+    const res = await api.put(`/todos/${todo._id}`, {...todo, completed: !todo.completed})
+    console.log(res);
   };
 
   useEffect(() => {
     getTodos();
   }, []);
+
+  // useCallback(() => {
+  //     getTodos()
+  //   },
+  //   [todos],
+  // )
 
   useEffect(() => {
     getSavedUser();
@@ -112,7 +126,8 @@ export function TodoProvider({ children }) {
         setIsLogedIn,
         removeTodo,
         isImage,
-        setIsImage
+        setIsImage,
+        getTodos
       }}
     >
       {children}
