@@ -1,24 +1,26 @@
-import React from 'react'
-import '../App.css';
-import { api, useTodos } from '../contexts/AppContext'
+import React from "react";
+import "../App.css";
+import { api, useTodos } from "../contexts/AppContext";
 
 function Login() {
-    const { setIsLogedIn } = useTodos()
-    const [loginInfo, setLoginInfo] = React.useState({names: '', hobbies: ''})
+  const { setIsLogedIn } = useTodos();
+  const [loginInfo, setLoginInfo] = React.useState({ names: "", hobbies: "" });
 
-    const submitInfo = async(e)=>{
-        e.preventDefault()
-        const res = await api.post('/users', {username: loginInfo.names, hobbies: loginInfo.hobbies})
-        console.log(res);
-        if (res.status===200) {
-          const res = await api.get(`/users/${loginInfo.names}`)
-          const user = await res.data
-          console.log(res);
-        localStorage.setItem('user', JSON.stringify(user))
-        setIsLogedIn(true)
-        }
-        
+  const submitInfo = async (e) => {
+    e.preventDefault();
+    const res = await api.post("/users", {
+      username: loginInfo.names,
+      hobbies: loginInfo.hobbies,
+    });
+    console.log(res);
+    if (res.status === 200) {
+      const res = await api.get(`/users/${loginInfo.names}`);
+      const user = await res.data;
+      localStorage.setItem("user", JSON.stringify(user));
+      setIsLogedIn(true);
+      window.location.replace("https://panga.vercel.app/");
     }
+  };
 
   return (
     <div className="w-full App h-screen flex items-center justify-center">
@@ -61,4 +63,4 @@ function Login() {
   );
 }
 
-export default Login
+export default Login;
