@@ -6,7 +6,7 @@ import { api } from "../contexts/AppContext";
 import { images } from "../images/image";
 
 function Form() {
-  const { todos, setTodos, getTodos, updateTodo, input, setInput, edit, setEdit } =
+  const { todos, setTodos, getTodos, updateTodo, input, setInput, edit, setEdit, user } =
     useTodos();
 
   const submitTodo = async (e) => {
@@ -16,6 +16,7 @@ function Form() {
     const todo = {
       text: input,
       image: image.length === 0?'rel': image[0].image,
+      username: user
     };
     setInput("");
     setTodos([...todos, todo]);
@@ -25,7 +26,7 @@ function Form() {
   };
 
   return (
-    <form className="w-3/4 mt-5 mx-auto rounded-3xl flex items-center justify-between bg-sky-300">
+    <form className="w-3/4 mt-5 mx-auto rounded-3xl flex items-center justify-between bg-sky-100">
       <input
         value={input}
         onChange={(e) => setInput(e.target.value)}

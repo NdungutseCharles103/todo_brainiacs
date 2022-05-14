@@ -19,10 +19,10 @@ export function TodoProvider({ children }) {
   const [input, setInput] = useState("");
   const [isImage, setIsImage] = useState(false)
 
-  const getSavedUser = () => {
-    const user = JSON.parse(localStorage.getItem("user"));
+  const getSavedUser = async() => {
+    const user = await JSON.parse(localStorage.getItem("user"));
     if (user) {
-      setUser(user.names);
+      setUser(user.username);
       console.log(user);
       setIsLogedIn(true);
     }
@@ -30,8 +30,11 @@ export function TodoProvider({ children }) {
   };
 
   const getTodos = async () => {
-    const res = await api.get("/todos");
+    const user = await JSON.parse(localStorage.getItem("user"));
+    console.log(user.username);
+    const res = await api.get(`/todos/${user.username}`);
     const data = await res.data;
+    console.log(data);
     setTodos(data)
   };
   const removeTodo = (todo) => {
