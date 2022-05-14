@@ -2,32 +2,17 @@ import React, { useState, useEffect } from "react";
 import { BiTrash, BiEdit, BiCheck } from "react-icons/bi";
 import { useTodos } from "../contexts/AppContext";
 import '../App.css'
-import { images } from "../images/image";
 
 function Todo({index, todo}) {
-  const [isImage, setIsImage] = useState(false)
-  const { setCompleted, editTodo, deleteTodo } = useTodos()
-
-  const image = images.filter(img=> todo.text.includes(img.name[0]) || todo.text.includes(img.name[1]))
-  const imageHandler = ()=>{
-    if (image.length !== 0) {
-      todo.image = image[0].image
-      setIsImage(true)
-    }else{
-      setIsImage(true);
-    }
-  }
-  useEffect(() => {
-    imageHandler();
-  }, [todo]);
+  const { setCompleted, editTodo,isImage, deleteTodo } = useTodos()
 
   return (
     <>
-      {isImage?(<div
+      {!isImage?(<div
         className="flex mt-8 items-center p-3 rounded-lg
      bg-slate-200 justify-between"
       >
-        {todo.image !== "" ? (
+        {todo.image !== "rel" ? (
           <img className="w-[70px]" src={todo.image} alt="" />
         ) : (
           <div

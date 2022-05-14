@@ -16,6 +16,7 @@ export function TodoProvider({ children }) {
   const [edit, setEdit] = useState(false);
   const [isLogedIn, setIsLogedIn] = useState(false);
   const [input, setInput] = useState("");
+  const [isImage, setIsImage] = useState(false)
 
   const getSavedUser = () => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -34,7 +35,7 @@ export function TodoProvider({ children }) {
   };
 
   const removeTodo = (todo) => {
-    setTodos(todos.filter((t) => t.id === todo.id));
+    setTodos(todos.filter((t) => t._id === todo._id));
   };
   const AddTodo = (todo) => {
     setTodos([...todos, todo]);
@@ -50,7 +51,7 @@ export function TodoProvider({ children }) {
     todo.text = input;
      setTodos(
        todos.map((td) => {
-         if (td.id === todo.id) {
+         if (td._id === todo._id) {
            return {
              ...td,
              text: input,
@@ -64,14 +65,14 @@ export function TodoProvider({ children }) {
   };
 
   const deleteTodo = (todo) => {
-    setTodos(todos.filter((t) => t.id !== todo.id));
+    setTodos(todos.filter((t) => t._id !== todo._id));
   };
 
   const setCompleted = (todo) => {
-    console.log(todo.id);
+    console.log(todo._id);
     setTodos(
       todos.map((td) => {
-        if (td.id === todo.id) {
+        if (td._id === todo._id) {
           return {
             ...td,
             completed: !td.completed,
@@ -110,6 +111,8 @@ export function TodoProvider({ children }) {
         isLogedIn,
         setIsLogedIn,
         removeTodo,
+        isImage,
+        setIsImage
       }}
     >
       {children}

@@ -3,16 +3,32 @@ import { BiPlus, BiEdit } from "react-icons/bi";
 import "../App.css";
 import { useTodos } from "../contexts/AppContext";
 import { api } from "../contexts/AppContext";
+import { images } from "../images/image";
 
 function Form() {
-  const { todos, setTodos, updateTodo, input, setInput, edit, setEdit } =
+  const { todos, setTodos, setIsImage, updateTodo, input, setInput, edit, setEdit } =
     useTodos();
+
+    // const image = images.filter(img=> todo.text.includes(img.name[0]) || todo.text.includes(img.name[1]))
+    // const imageHandler = ()=>{
+    //   if (image.length !== 0) {
+    //     todo.image = image[0].image
+    //     setIsImage(true)
+    //   }else{
+    //     setIsImage(true);
+    //   }
+    // }
+    // useEffect(() => {
+    //   imageHandler();
+    // }, []);
 
   const submitTodo = async (e) => {
     e.preventDefault();
+    const image = images.filter(img=> input.includes(img.name[0]) || input.includes(img.name[1]))
+    console.log(image);
     const todo = {
       text: input,
-      image: "relImage",
+      image: image.length === 0?'rel': image[0].image,
     };
     setInput("");
     setTodos([...todos, todo]);
