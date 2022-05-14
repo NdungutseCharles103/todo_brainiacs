@@ -44,7 +44,7 @@ export function TodoProvider({ children }) {
     setTodos([...todos, todo]);
   };
   const editTodo = (todo) => {
-    setEdit(true);
+    setEdit(!edit);
     setInput(todo.text);
     setTodo(todo);
   };

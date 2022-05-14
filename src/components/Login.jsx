@@ -55,7 +55,7 @@ function Login() {
             type="submit"
             onClick={submitInfo}
             value="Get Started"
-            className="px-3 py-2 mt-2 bg-blue-800 w-1/2 mx-auto cursor-pointer"
+            className="px-3 py-2 text-white mt-2 bg-blue-800 w-1/2 mx-auto cursor-pointer"
           />
         </div>
       </form>
